@@ -20,12 +20,7 @@
 
     <hr />
 
-    <div class="my-2">
-        <span class="mr-3">Filters: </span>
-        <a asp-controller="Home" asp-action="People" asp-route-page="1" class="btn btn-info mr-2">All</a>
-        <a asp-controller="Home" asp-action="People" asp-route-page="1" asp-route-orderBy="evens" class="btn btn-info mr-2">Evens</a>
-        <a asp-controller="Home" asp-action="People" asp-route-page="1" asp-route-orderBy="odds" class="btn btn-info">Odds</a>
-    </div>
+    <vc:filter action="people"></vc:filter>
 
     <ul class="list-group">
         @foreach (var item in Model)
