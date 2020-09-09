@@ -5,11 +5,11 @@ namespace GenericPageable.Models
 {
     public class PaginatedList<T> : List<T>, IPageable
     {
-        public PaginatedList(List<T> items, int totalRecords, int pageIndex, int pageSize, string orderBy)
+        public PaginatedList(List<T> items, int totalRecords, PagerSettings settings)
         {
-            OrderBy = orderBy;
-            PageSize = pageSize;
-            CurrentPage = pageIndex;
+            OrderBy = settings.OrderBy;
+            PageSize = settings.PageSize;
+            CurrentPage = settings.Page;
             TotalRecords = totalRecords;
             AddRange(items);
         }

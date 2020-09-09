@@ -8,7 +8,7 @@ namespace GenericPageable.Controllers
     {
         private readonly PersonRepository _personRepository;
         private readonly PetsRepository _petsRepository;
-        int PAGE_SIZE = 10;
+        
 
         public HomeController(PersonRepository personRepository, PetsRepository petsRepository)
         {
@@ -21,17 +21,17 @@ namespace GenericPageable.Controllers
             return View();
         }
 
-        public IActionResult People(int page = 1)
+        public IActionResult People(PagerSettings settings)
         {
-            var people = _personRepository.GetPeople(page, PAGE_SIZE);
-            var result = new PaginatedList<Person>(people, PersonRepository.TotalCount, page, PAGE_SIZE, "");
+            var people = _personRepository.GetPeople(settings);
+            var result = new PaginatedList<Person>(people, PersonRepository.TotalCount, settings);
             return View(result);
         }
 
-        public IActionResult Pets(int page = 1)
+        public IActionResult Pets(PagerSettings settings)
         {
-            var pets = _petsRepository.GetPets(page, PAGE_SIZE);
-            var result = new PaginatedList<Pet>(pets, PetsRepository.TotalCount, page, PAGE_SIZE, "");
+            var pets = _petsRepository.GetPets(settings);
+            var result = new PaginatedList<Pet>(pets, PetsRepository.TotalCount, settings);
             return View(result);
         }
     }

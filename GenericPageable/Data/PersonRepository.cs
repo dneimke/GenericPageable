@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GenericPageable.Models;
 
 namespace GenericPageable.Data
 {
@@ -19,13 +20,11 @@ namespace GenericPageable.Data
     public class PersonRepository
     {
         public static int TotalCount = 100;
-        public List<Person> GetPeople(int pageIndex, int pageSize)
+        public List<Person> GetPeople(PagerSettings settings)
         {
-            var skip = (pageIndex - 1) * pageSize;
-
             var people = Enumerable.Range(1, TotalCount)
-                .Skip(skip)
-                .Take(pageSize)
+                .Skip(settings.Skip)
+                .Take(settings.PageSize)
                 .Select(x => new Person(x, $"Pet {x}"))
                 .ToList();
 
