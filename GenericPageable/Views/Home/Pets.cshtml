@@ -1,4 +1,4 @@
-﻿@model PaginatedList<Pet>
+﻿@model PaginatedList<IThing>
 
 @{
     ViewData["Title"] = "Pets";
@@ -16,6 +16,13 @@
         <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">
             <i class="fas fa-backward"></i> Home
         </a>
+    </div>
+
+    <div class="my-2">
+        <span class="mr-3">Filters: </span>
+        <a asp-controller="Home" asp-action="Pets" asp-route-page="1" class="btn btn-info mr-2">All</a>
+        <a asp-controller="Home" asp-action="Pets" asp-route-page="1" asp-route-orderBy="evens" class="btn btn-info mr-2">Evens</a>
+        <a asp-controller="Home" asp-action="Pets" asp-route-page="1" asp-route-orderBy="odds" class="btn btn-info">Odds</a>
     </div>
 
     <ul class="list-group">

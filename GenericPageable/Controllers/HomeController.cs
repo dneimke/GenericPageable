@@ -23,15 +23,13 @@ namespace GenericPageable.Controllers
 
         public IActionResult People(PagerSettings settings)
         {
-            var people = _personRepository.GetPeople(settings);
-            var result = new PaginatedList<Person>(people, PersonRepository.TotalCount, settings);
+            var result = _personRepository.GetPeople(settings);
             return View(result);
         }
 
         public IActionResult Pets(PagerSettings settings)
         {
-            var pets = _petsRepository.GetPets(settings);
-            var result = new PaginatedList<Pet>(pets, PetsRepository.TotalCount, settings);
+            var result = _petsRepository.GetPets(settings);
             return View(result);
         }
     }

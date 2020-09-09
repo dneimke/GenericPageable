@@ -7,6 +7,6 @@
         public int PageSize = 10;
         public int Skip => (Page - 1) * PageSize;
 
-        public string OrderBy { get; internal set; }
+        public string OrderBy { get; set; } = "";
     }
 }

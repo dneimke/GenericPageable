@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using GenericPageable.Models;
 
 namespace GenericPageable.Data
 {
-    public class Pet
+    public class Pet : IThing
     {
         public Pet(int id, string name)
         {
@@ -20,15 +19,18 @@ namespace GenericPageable.Data
     public class PetsRepository
     {
         public static int TotalCount = 100;
-        public List<Pet> GetPets(PagerSettings settings)
+        public PaginatedList<IThing> GetPets(PagerSettings settings)
         {
-            var pets = Enumerable.Range(1, TotalCount)
-                .Skip(settings.Skip)
-                .Take(settings.PageSize)
-                .Select(x => new Pet(x, $"Pet {x}"))
+            var list = Enumerable.Range(1, TotalCount)
+                .Select(x => new Person(x, $"Pet {x}"))
+                .FilterBy(settings)
                 .ToList();
 
-            return pets;
+            var pets = list.Skip(settings.Skip)
+                .Take(settings.PageSize)
+                .ToList();
+
+            return new PaginatedList<IThing>(pets, list.Count, settings);
         }
     }
 }
