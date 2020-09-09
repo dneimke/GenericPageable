@@ -21,17 +21,17 @@ namespace GenericPageable.Controllers
             return View();
         }
 
-        public IActionResult People(int pageIndex = 1)
+        public IActionResult People(int page = 1)
         {
-            var people = _personRepository.GetPeople(pageIndex, PAGE_SIZE);
-            var result = new PaginatedList<Person>(people, PersonRepository.TotalCount, pageIndex, PAGE_SIZE, "");
+            var people = _personRepository.GetPeople(page, PAGE_SIZE);
+            var result = new PaginatedList<Person>(people, PersonRepository.TotalCount, page, PAGE_SIZE, "");
             return View(result);
         }
 
-        public IActionResult Pets(int pageIndex = 1)
+        public IActionResult Pets(int page = 1)
         {
-            var pets = _petsRepository.GetPets(pageIndex, PAGE_SIZE);
-            var result = new PaginatedList<Pet>(pets, PetsRepository.TotalCount, pageIndex, PAGE_SIZE, "");
+            var pets = _petsRepository.GetPets(page, PAGE_SIZE);
+            var result = new PaginatedList<Pet>(pets, PetsRepository.TotalCount, page, PAGE_SIZE, "");
             return View(result);
         }
     }

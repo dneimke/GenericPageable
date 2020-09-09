@@ -9,8 +9,8 @@
         @if (Model.CanMovePrevious)
         {
             <a asp-route-orderBy="@orderBy"
-               asp-route-page="@Model..PreviousPage">
-                <i class="fas fa-arrow-circle-left fa-2x"></i>
+               asp-route-page="@Model.PreviousPage" class="btn btn-secondary">
+                <i class="fas fa-backward"></i>
             </a>
         }
     </div>
@@ -21,8 +21,8 @@
         @if (Model.CanMoveNext)
         {
             <a asp-route-orderBy="@orderBy"
-               asp-route-page="@Model.NextPage">
-                <i class="fas fa-arrow-circle-right fa-2x"></i>
+               asp-route-page="@Model.NextPage" class="btn btn-secondary">
+                <i class="fas fa-forward"></i>
             </a>
         }
     </div>

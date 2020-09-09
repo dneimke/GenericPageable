@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 
 namespace GenericPageable.Data
 {
@@ -22,7 +21,10 @@ namespace GenericPageable.Data
         public static int TotalCount = 100;
         public List<Pet> GetPets(int pageIndex, int pageSize)
         {
+            var skip = (pageIndex - 1) * pageSize;
+
             var pets = Enumerable.Range(1, TotalCount)
+                .Skip(skip)
                 .Skip(pageIndex)
                 .Take(pageSize)
                 .Select(x => new Pet(x, $"Pet {x}"))

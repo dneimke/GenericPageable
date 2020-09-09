@@ -21,8 +21,10 @@ namespace GenericPageable.Data
         public static int TotalCount = 100;
         public List<Person> GetPeople(int pageIndex, int pageSize)
         {
+            var skip = (pageIndex - 1) * pageSize;
+
             var people = Enumerable.Range(1, TotalCount)
-                .Skip(pageIndex)
+                .Skip(skip)
                 .Take(pageSize)
                 .Select(x => new Person(x, $"Pet {x}"))
                 .ToList();
