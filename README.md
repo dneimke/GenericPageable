@@ -6,4 +6,4 @@ The application provides 2 pages that each display a different type of data but 
 
 The following image shows the Pets route which provides filtering and allows paging through a list of Pet data.
 
-![alt text](https://github.com/dneimke/GenericPageable/blob/master/paging-example.png?raw=true)
+![alt text](https://github.com/dneimke/GenericPageable/blob/master/pets-example.png?raw=true)
