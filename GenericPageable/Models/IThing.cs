@@ -11,7 +11,7 @@ namespace GenericPageable.Models
 
     public static class ThingExtensions
     {
-        public static IEnumerable<IThing> FilterBy(this IEnumerable<IThing> source, PagerSettings settings)
+        public static IEnumerable<T> FilterBy<T>(this IEnumerable<T> source, PagerSettings settings) where T:IThing
         {
             if (settings.OrderBy.ToLower() == "evens")
                 return source.Where(x => x.Id % 2 == 0);

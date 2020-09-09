@@ -18,10 +18,10 @@ namespace GenericPageable.Data
 
     public class PetsRepository
     {
-        public PaginatedList<IThing> GetPets(PagerSettings settings)
+        public PaginatedList<Pet> GetPets(PagerSettings settings)
         {
             var list = Enumerable.Range(1, 100)
-                .Select(x => new Person(x, $"Pet {x}"))
+                .Select(x => new Pet(x, $"Pet {x}"))
                 .FilterBy(settings)
                 .ToList();
 
@@ -29,7 +29,7 @@ namespace GenericPageable.Data
                 .Take(settings.PageSize)
                 .ToList();
 
-            return new PaginatedList<IThing>(pets, list.Count, settings);
+            return new PaginatedList<Pet>(pets, list.Count, settings);
         }
     }
 }

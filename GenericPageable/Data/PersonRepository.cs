@@ -18,7 +18,7 @@ namespace GenericPageable.Data
 
     public class PersonRepository
     {
-        public PaginatedList<IThing> GetPeople(PagerSettings settings)
+        public PaginatedList<Person> GetPeople(PagerSettings settings)
         {
             var list = Enumerable.Range(1, 100)
                 .Select(x => new Person(x, $"Person {x}"))
@@ -29,7 +29,7 @@ namespace GenericPageable.Data
                 .Take(settings.PageSize)
                 .ToList();
 
-            return new PaginatedList<IThing>(people, list.Count, settings);
+            return new PaginatedList<Person>(people, list.Count, settings);
         }
     }
 }
