@@ -1,0 +1,30 @@
+﻿@model IPageable
+@{
+    var orderBy = @Model.OrderBy ?? "";
+}
+
+<div class="row my-4">
+    <div class="col-md-3"></div>
+    <div class="col-md-1">
+        @if (Model.CanMovePrevious)
+        {
+            <a asp-route-orderBy="@orderBy"
+               asp-route-page="@Model..PreviousPage">
+                <i class="fas fa-arrow-circle-left fa-2x"></i>
+            </a>
+        }
+    </div>
+    <div class="col-md-4 text-center align-middle" style="line-height: 2em;">
+        Page @Model.CurrentPage of @Model.TotalPages
+    </div>
+    <div class="col-md-1">
+        @if (Model.CanMoveNext)
+        {
+            <a asp-route-orderBy="@orderBy"
+               asp-route-page="@Model.NextPage">
+                <i class="fas fa-arrow-circle-right fa-2x"></i>
+            </a>
+        }
+    </div>
+    <div class="col-md-3"></div>
+</div>

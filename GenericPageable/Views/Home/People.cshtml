@@ -1,0 +1,21 @@
+﻿@model PaginatedList<Person>
+
+@{
+    ViewData["Title"] = "People";
+}
+
+<div class="container text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <div>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back</a>
+    </div>
+
+    <ul class="list-group">
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item">[@item.Id] @item.Name</li>
+        }
+    </ul>
+
+    <vc:pager pageable="@Model"></vc:pager>
+</div>
