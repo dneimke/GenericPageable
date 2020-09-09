@@ -18,10 +18,9 @@ namespace GenericPageable.Data
 
     public class PetsRepository
     {
-        public static int TotalCount = 100;
         public PaginatedList<IThing> GetPets(PagerSettings settings)
         {
-            var list = Enumerable.Range(1, TotalCount)
+            var list = Enumerable.Range(1, 100)
                 .Select(x => new Person(x, $"Pet {x}"))
                 .FilterBy(settings)
                 .ToList();

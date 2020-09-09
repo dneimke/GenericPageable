@@ -25,10 +25,7 @@
     <ul class="list-group">
         @foreach (var item in Model)
         {
-            <li class="list-group-item">
-                <span class="badge badge-primary badge-pill mr-2">@item.Id</span>
-                @item.Name
-            </li>
+            <vc:card thing="@item"></vc:card>
         }
     </ul>
 

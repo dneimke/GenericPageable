@@ -18,10 +18,9 @@ namespace GenericPageable.Data
 
     public class PersonRepository
     {
-        public static int TotalCount = 100;
         public PaginatedList<IThing> GetPeople(PagerSettings settings)
         {
-            var list = Enumerable.Range(1, TotalCount)
+            var list = Enumerable.Range(1, 100)
                 .Select(x => new Person(x, $"Person {x}"))
                 .FilterBy(settings)
                 .ToList();
